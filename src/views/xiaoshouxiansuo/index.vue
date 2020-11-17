@@ -140,7 +140,7 @@
       <el-checkbox v-model="checked" class="gjms">跟进模式</el-checkbox>
       
         <el-tooltip class="item" effect="dark" content="Top Center 提示文字" placement="top">
-          <i class="el-icon-moon-night gjms"></i>
+          <i class="el-icon-question gjms"></i>
         </el-tooltip>
       &nbsp;
       

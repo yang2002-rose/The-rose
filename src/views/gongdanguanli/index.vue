@@ -81,18 +81,18 @@
  <i class="el-icon-arrow-right"></i>
  <a>一级分类</a>
  <i class="el-icon-arrow-right"></i>
- <a>客户列表</a>
+ <a>工单管理</a>
   </div>
   <div class="cxs1">
       <br>
       <div class="cxs1-1">
   <el-tabs v-model="activeName" @tab-click="handleClick" class="cxs1-1-1">
-    <el-tab-pane label="全部客户" name="first">
+    <el-tab-pane label="全部订单" name="first">
         <!-- 搜索 -->
       <div>
-         <el-input v-model="input" class="inputs1" placeholder="搜索关键字"></el-input>
+         <el-input v-model="input" class="inputs1" placeholder="搜索关键词"></el-input>
          &nbsp;
-    <el-select v-model="value" class="inputs1" placeholder="客户状态">
+    <el-select v-model="value" class="inputs1" placeholder="工单状态">
     <el-option
       v-for="item in options"
       :key="item.value"
@@ -101,7 +101,7 @@
     </el-option>
   </el-select>
   &nbsp;
-  <el-select v-model="value" class="inputs1" placeholder="客户类型">
+  <el-select v-model="value" class="inputs1" placeholder="工单类型">
     <el-option
       v-for="item in options"
       :key="item.value"
@@ -110,7 +110,7 @@
     </el-option>
   </el-select>
   &nbsp;
-  <el-select v-model="value" class="inputs1" placeholder="客户星级">
+  <el-select v-model="value" class="inputs1" placeholder="紧急程度">
     <el-option
       v-for="item in options"
       :key="item.value"
@@ -119,37 +119,29 @@
     </el-option>
   </el-select>
   &nbsp;
-   <el-date-picker
-      v-model="value1"
-      class="inputs1"
-      type="date"
-      placeholder="选择日期">
-    </el-date-picker>
+    <el-select v-model="value" class="inputs1" placeholder="等待时间">
+    <el-option
+      v-for="item in options"
+      :key="item.value"
+      :label="item.label"
+      :value="item.value">
+    </el-option>
+  </el-select>
     &nbsp;
     <el-button type="primary" class="buts1" icon="el-icon-search">查询</el-button>
      <el-button class="buts1" icon="el-icon-refresh-right" plain>重置</el-button>
-     <el-link type="primary" class="gjsx" icon="el-icon-thumb" :underline="false">高级筛选</el-link>
      <br>
      <el-button type="primary" icon="el-icon-plus">添加</el-button>
       <el-button icon="el-icon-download">导入</el-button>
       <el-button icon="el-icon-upload2">导出</el-button>
-     <el-button icon="el-icon-s-fold">新建任务</el-button>
-     <el-button icon="el-icon-refresh">转移客户</el-button>
-     <el-button icon="el-icon-user-solid">移入公海</el-button>
-     <el-button icon="el-icon-share">合并客户</el-button>
-     <el-button icon="el-icon-edit">批量编辑</el-button>
+     <el-button icon="el-icon-refresh">分配工单</el-button>
      &nbsp;
-      <el-checkbox v-model="checked" class="gjms">跟进模式</el-checkbox>
       
-        <el-tooltip class="item" effect="dark" content="Top Center 提示文字" placement="top">
-          <i class="el-icon-question gjms"></i>
-        </el-tooltip>
-      &nbsp;
       
   
     
-      <el-button icon="el-icon-s-unfold">排序</el-button>
-      <el-button icon="el-icon-film">列表</el-button>
+      <el-button icon="el-icon-s-unfold" class="gjms1">排序</el-button>
+      <el-button icon="el-icon-film" class="gjms2">列表</el-button>
       </div>
       <br>
         <el-table
@@ -164,51 +156,44 @@
     </el-table-column>
      <el-table-column
       prop="khmc"
-      label="客户名称"
-      width="120">
+      label="工单编号"
+      width="140">
     </el-table-column>
     <el-table-column
       prop="khzt"
-      label="客户状态"
-      width="120">
+      label="工单标题"
+      width="140">
     </el-table-column>
-     <el-table-column
-      prop="khxj"
-      label="客户星级"
-      width="120">
-  <el-rate
-   disabled
-  v-model="value"
-   score-template="{value}"
-  show-text>
-</el-rate>
+      <el-table-column
+      prop="sjhm"
+      label="工单类型"
+      width="140">
     </el-table-column>
+    
     <el-table-column
       prop="slxr"
-      label="首联系人"
-      width="120">
-    </el-table-column>
-     <el-table-column
-      prop="sjhm"
-      label="手机号码"
-      width="120">
+      label="处理人员"
+      width="140">
     </el-table-column>
     <el-table-column
-      label="最后跟进"
-      width="120">
+      label="发起时间"
+      width="140">
       <template slot-scope="scope">{{ scope.row.date }}</template>
     </el-table-column>
      <el-table-column
       prop="day"
-      label="未跟进天数"
-      width="120">
+      label="工单状态"
+      width="140">
+    </el-table-column>
+     <el-table-column
+      prop="khmc"
+      label="紧急程度"
+      width="140">
     </el-table-column>
      <el-table-column
      label="操作"
       width="240">
-       <el-button @click="handleClick(scope.row)" icon="el-icon-chat-line-round" type="text" size="small">跟进</el-button>
-       <el-button @click="handleClick(scope.row)" icon="el-icon-edit" type="text" size="small">编辑</el-button>
-       <el-button @click="handleClick(scope.row)" icon="el-icon-upload2" type="text" size="small">置顶</el-button>
+       <el-button @click="handleClick(scope.row)" icon="el-icon-edit" type="text" size="small">详情</el-button>
        <el-button  @click="handleClick(scope.row)" class="red" icon="el-icon-delete" type="text" size="small">删除</el-button>
     </el-table-column>
      
@@ -236,19 +221,13 @@
   :total="100">
 </el-pagination></p>
     </el-tab-pane>
-      <el-tab-pane label="我的客户" name="two" disabled="">
+      <el-tab-pane label="我发起的" name="two" disabled="">
 
       </el-tab-pane>
-      <el-tab-pane label="下属客户" name="two" disabled="">
+      <el-tab-pane label="我处理的" name="two" disabled="">
 
       </el-tab-pane>
-      <el-tab-pane label="重点客户" name="two" disabled="">
-
-      </el-tab-pane>
-      <el-tab-pane label="我协作的" name="two" disabled="">
-
-      </el-tab-pane>
-      <el-tab-pane label="下属协作的" name="two" disabled="">
+      <el-tab-pane label="抄送给我的" name="two" disabled="">
 
       </el-tab-pane>
   </el-tabs>
@@ -381,6 +360,15 @@
   .gjms{
       position:relative;
       top:4px;
+      left: 255px;
+  }
+  .gjms1{
+      position:relative;
+      left: 610px;
+  }
+  .gjms2{
+      position:relative;
+      left: 610px;
   }
 </style>
 <script>

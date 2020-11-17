@@ -81,18 +81,18 @@
  <i class="el-icon-arrow-right"></i>
  <a>一级分类</a>
  <i class="el-icon-arrow-right"></i>
- <a>客户列表</a>
+ <a>销售线索</a>
   </div>
   <div class="cxs1">
       <br>
       <div class="cxs1-1">
   <el-tabs v-model="activeName" @tab-click="handleClick" class="cxs1-1-1">
-    <el-tab-pane label="全部客户" name="first">
+    <el-tab-pane label="全部商机" name="first">
         <!-- 搜索 -->
       <div>
-         <el-input v-model="input" class="inputs1" placeholder="搜索关键字"></el-input>
+         <el-input v-model="input" class="inputs1" placeholder="搜索关键词"></el-input>
          &nbsp;
-    <el-select v-model="value" class="inputs1" placeholder="客户状态">
+    <el-select v-model="value" class="inputs1" placeholder="商机阶段">
     <el-option
       v-for="item in options"
       :key="item.value"
@@ -101,7 +101,7 @@
     </el-option>
   </el-select>
   &nbsp;
-  <el-select v-model="value" class="inputs1" placeholder="客户类型">
+  <el-select v-model="value" class="inputs1" placeholder="商机来源">
     <el-option
       v-for="item in options"
       :key="item.value"
@@ -110,7 +110,7 @@
     </el-option>
   </el-select>
   &nbsp;
-  <el-select v-model="value" class="inputs1" placeholder="客户星级">
+  <el-select v-model="value" class="inputs1" placeholder="成交机率">
     <el-option
       v-for="item in options"
       :key="item.value"
@@ -123,21 +123,19 @@
       v-model="value1"
       class="inputs1"
       type="date"
-      placeholder="选择日期">
+      placeholder="预计签单日期">
     </el-date-picker>
     &nbsp;
     <el-button type="primary" class="buts1" icon="el-icon-search">查询</el-button>
      <el-button class="buts1" icon="el-icon-refresh-right" plain>重置</el-button>
-     <el-link type="primary" class="gjsx" icon="el-icon-thumb" :underline="false">高级筛选</el-link>
+     <el-link type="primary" class="gjsx" icon="el-icon-thumb" :underline="false">高级搜索</el-link>
      <br>
      <el-button type="primary" icon="el-icon-plus">添加</el-button>
       <el-button icon="el-icon-download">导入</el-button>
       <el-button icon="el-icon-upload2">导出</el-button>
-     <el-button icon="el-icon-s-fold">新建任务</el-button>
-     <el-button icon="el-icon-refresh">转移客户</el-button>
-     <el-button icon="el-icon-user-solid">移入公海</el-button>
-     <el-button icon="el-icon-share">合并客户</el-button>
-     <el-button icon="el-icon-edit">批量编辑</el-button>
+     <el-button icon="el-icon-refresh">转移商机</el-button>
+     <el-button icon="el-icon-s-fold">添加协作</el-button>
+     <el-button icon="el-icon-s-comment">发送短信</el-button>
      &nbsp;
       <el-checkbox v-model="checked" class="gjms">跟进模式</el-checkbox>
       
@@ -148,8 +146,8 @@
       
   
     
-      <el-button icon="el-icon-s-unfold">排序</el-button>
-      <el-button icon="el-icon-film">列表</el-button>
+      <el-button icon="el-icon-s-unfold" class="gjms1">排序</el-button>
+      <el-button icon="el-icon-film" class="gjms2">列表</el-button>
       </div>
       <br>
         <el-table
@@ -163,34 +161,28 @@
       width="55">
     </el-table-column>
      <el-table-column
-      prop="khmc"
-      label="客户名称"
+      prop="sjbt"
+      label="商机标题"
       width="120">
     </el-table-column>
     <el-table-column
-      prop="khzt"
-      label="客户状态"
+      prop="glkh"
+      label="关联客户"
       width="120">
-    </el-table-column>
-     <el-table-column
-      prop="khxj"
-      label="客户星级"
-      width="120">
-  <el-rate
-   disabled
-  v-model="value"
-   score-template="{value}"
-  show-text>
-</el-rate>
     </el-table-column>
     <el-table-column
-      prop="slxr"
-      label="首联系人"
+      prop="sjjd"
+      label="商机阶段"
       width="120">
     </el-table-column>
-     <el-table-column
-      prop="sjhm"
-      label="手机号码"
+    <el-table-column
+      prop="bjjl"
+      label="报价记录"
+      width="120">
+    </el-table-column>
+    <el-table-column
+      prop="bjzje"
+      label="报价总金额"
       width="120">
     </el-table-column>
     <el-table-column
@@ -236,19 +228,19 @@
   :total="100">
 </el-pagination></p>
     </el-tab-pane>
-      <el-tab-pane label="我的客户" name="two" disabled="">
+      <el-tab-pane label="我的商机" name="two" disabled="">
 
       </el-tab-pane>
-      <el-tab-pane label="下属客户" name="two" disabled="">
-
-      </el-tab-pane>
-      <el-tab-pane label="重点客户" name="two" disabled="">
+      <el-tab-pane label="下属商机" name="two" disabled="">
 
       </el-tab-pane>
       <el-tab-pane label="我协作的" name="two" disabled="">
 
       </el-tab-pane>
-      <el-tab-pane label="下属协作的" name="two" disabled="">
+       <el-tab-pane label="下属协作" name="two" disabled="">
+
+      </el-tab-pane>
+       <el-tab-pane label="成交商机" name="two" disabled="">
 
       </el-tab-pane>
   </el-tabs>
@@ -381,6 +373,15 @@
   .gjms{
       position:relative;
       top:4px;
+      left: 255px;
+  }
+  .gjms1{
+      position:relative;
+      left: 255px;
+  }
+  .gjms2{
+      position:relative;
+      left: 255px;
   }
 </style>
 <script>
@@ -390,27 +391,27 @@ export default {
           drawer: false,
            direction: 'ltr',
           tableData: [{
-              khmc:'深圳深信服公司',
-              khzt:'正在跟进',
-              khxj:'',
-              slxr:'李雄',
-              sjhm:'10010',
+              sjbt:'商机标题',
+              glkh:'深圳深信服',
+              sjjd:'初步洽谈',
+              bjjl:'10条',
+              bjzje:'￥10,000.00',
              date:'2019-9-16',
           day:'30',
         }, {
-             khmc:'深圳深信服公司',
-              khzt:'正在跟进',
-              khxj:'',
-              slxr:'李雄',
-              sjhm:'10010',
+             sjbt:'商机标题',
+              glkh:'深圳深信服',
+              sjjd:'初步洽谈',
+              bjjl:'10条',
+              bjzje:'￥10,000.00',
              date:'2019-9-16',
           day:'30',
         },{
-             khmc:'深圳深信服公司',
-              khzt:'正在跟进',
-              khxj:'',
-              slxr:'李雄',
-              sjhm:'10010',
+             sjbt:'商机标题',
+              glkh:'深圳深信服',
+              sjjd:'初步洽谈',
+              bjjl:'10条',
+              bjzje:'￥10,000.00',
              date:'2019-9-16',
           day:'30',
         } ],

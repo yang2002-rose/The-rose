@@ -52,6 +52,62 @@ export default new Router({
       // this generates a separate chunk (about.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
       component: () => import(/* webpackChunkName: "about" */ './views/xiaoshouxiansuo/index.vue')
+    },
+    {
+      path: '/quanbushangji',
+      name: 'quanbushangji',
+      // route level code-splitting
+      // this generates a separate chunk (about.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import(/* webpackChunkName: "about" */ './views/quanbushangji/index.vue')
+    },
+    {
+      path: '/quanbudingdan',
+      name: 'quanbudingdan',
+      // route level code-splitting
+      // this generates a separate chunk (about.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import(/* webpackChunkName: "about" */ './views/quanbudingdan/index.vue')
+    },
+    {
+      path: '/huikuanguanli',
+      name: 'huikuanguanli',
+      // route level code-splitting
+      // this generates a separate chunk (about.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import(/* webpackChunkName: "about" */ './views/huikuanguanli/index.vue')
+    },
+    {
+      path: '/huikuanshenpi',
+      name: 'huikuanshenpi',
+      // route level code-splitting
+      // this generates a separate chunk (about.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import(/* webpackChunkName: "about" */ './views/huikuanshenpi/index.vue')
+    },
+    {
+      path: '/baoxiaoshenpi',
+      name: 'baoxiaoshenpi',
+      // route level code-splitting
+      // this generates a separate chunk (about.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import(/* webpackChunkName: "about" */ './views/baoxiaoshenpi/index.vue')
+    },
+    {
+      path: '/gongdanguanli',
+      name: 'gongdanguanli',
+      // route level code-splitting
+      // this generates a separate chunk (about.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import(/* webpackChunkName: "about" */ './views/gongdanguanli/index.vue')
+    },
+    {
+      path: '/xitonggonggao',
+      name: 'xitonggonggao',
+      // route level code-splitting
+      // this generates a separate chunk (about.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import(/* webpackChunkName: "about" */ './views/xitonggonggao/index.vue')
     }
   ]
 })
