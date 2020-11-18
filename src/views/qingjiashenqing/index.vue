@@ -147,7 +147,7 @@
       width="120">
        <el-button @click="handleClick(scope.row)" icon="el-icon-edit" type="text" size="small">详情</el-button>
       
-       <el-button  @click="handleClick(scope.row)" class="red" icon="el-icon-delete" type="text" size="small">删除</el-button>
+       <el-button  @click="open" class="red" icon="el-icon-delete" type="text" size="small">删除</el-button>
     </el-table-column>
      
   </el-table>
@@ -229,7 +229,7 @@
       width="120">
        <el-button @click="handleClick(scope.row)" icon="el-icon-edit" type="text" size="small">详情</el-button>
       
-       <el-button  @click="handleClick(scope.row)" class="red" icon="el-icon-delete" type="text" size="small">删除</el-button>
+       <el-button  @click="open" class="red" icon="el-icon-delete" type="text" size="small">删除</el-button>
     </el-table-column>
      
   </el-table>
@@ -304,7 +304,7 @@
       width="120">
        <el-button @click="handleClick(scope.row)" icon="el-icon-edit" type="text" size="small">详情</el-button>
       
-       <el-button  @click="handleClick(scope.row)" class="red" icon="el-icon-delete" type="text" size="small">删除</el-button>
+       <el-button  @click="open" class="red" icon="el-icon-delete" type="text" size="small">删除</el-button>
     </el-table-column>
      
   </el-table>
@@ -379,7 +379,7 @@
       width="120">
        <el-button @click="handleClick(scope.row)" icon="el-icon-edit" type="text" size="small">详情</el-button>
       
-       <el-button  @click="handleClick(scope.row)" class="red" icon="el-icon-delete" type="text" size="small">删除</el-button>
+       <el-button  @click="open" class="red" icon="el-icon-delete" type="text" size="small">删除</el-button>
     </el-table-column>
      
   </el-table>
@@ -454,7 +454,7 @@
       width="120">
        <el-button @click="handleClick(scope.row)" icon="el-icon-edit" type="text" size="small">详情</el-button>
       
-       <el-button  @click="handleClick(scope.row)" class="red" icon="el-icon-delete" type="text" size="small">删除</el-button>
+       <el-button  @click="open" class="red" icon="el-icon-delete" type="text" size="small">删除</el-button>
     </el-table-column>
      
   </el-table>
@@ -733,6 +733,23 @@ export default {
           age: '',
     },
     methods: {
+       open() {
+        this.$confirm('此操作将永久删除该文件, 是否继续?', '提示', {
+          confirmButtonText: '确定',
+          cancelButtonText: '取消',
+          type: 'warning'
+        }).then(() => {
+          this.$message({
+            type: 'success',
+            message: '删除成功!'
+          });
+        }).catch(() => {
+          this.$message({
+            type: 'info',
+            message: '已取消删除'
+          });          
+        });
+      },
          toggleSelection(rows) {
         if (rows) {
           rows.forEach(row => {
