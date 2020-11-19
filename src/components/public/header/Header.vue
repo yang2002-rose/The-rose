@@ -1,97 +1,202 @@
 <template>
-  <div class="about">
-<el-container>
-<el-header>
-      <div>
-          <img src="../../../images/logos.png" class="zyimg1" />
-          <span class="zyimg1-s">
-              {{title}}
-          </span>
-          <el-autocomplete class="zyimg1ss" v-model="state" :fetch-suggestions="querySearchAsync" suffix-icon="el-icon-search" placeholder="请输入内容" @select="handleSelect"></el-autocomplete>
-      <div class="zyimg1sss">
-          <el-dropdown @command="handleCommand">
-  <span class="el-dropdown-link"><i class="el-icon-s-custom"></i>
-    admin<i class="el-icon-arrow-down el-icon--right"></i>
-  </span>
-  <el-dropdown-menu slot="dropdown">
-    <el-dropdown-item command="a">修改资料</el-dropdown-item>
-    <el-dropdown-item command="b">
-      <router-link tag="p" to="/xiugaimima">修改密码</router-link>
-    </el-dropdown-item>
-    <el-dropdown-item command="c">修改头像</el-dropdown-item>
-    <el-dropdown-item>
-    <el-button type="text" @click="dialogVisible = true">退出系统</el-button>
-
-<el-dialog
-  title="提示"
-  :visible.sync="dialogVisible"
-  width="30%"
-  :before-close="handleClose">
-  <span>确定退出系统？</span>
-  <span slot="footer" class="dialog-footer">
-    <el-button @click="dialogVisible = false">取 消</el-button>
-    <el-button type="primary" @click="dialogVisible = false">
-       <router-link tag="p" to="/Login">确 定</router-link>
-      </el-button>
-  </span>
-</el-dialog>
-
-   </el-dropdown-item>
-  </el-dropdown-menu>
-</el-dropdown>
-      </div>
-  
-      </div>
-  </el-header>
-</el-container>
-  </div>
+    <div class="header">
+        <!-- 折叠按钮 -->
+        <div class="collapse-btn"  @click="collapseChage">
+            <i v-if="!collapse"><img src="../../../images/logos.png" class="tx"/></i>
+            <i v-else><img src="../../../images/logos.png" class="tx"/></i>
+        </div>
+        <div class="logo">
+          客户关系管理系统
+          </div>
+        <div class="header-right">
+            <div class="header-user-con">
+                <!-- 全屏显示 -->
+                <div class="btn-fullscreen" @click="handleFullScreen">
+                    <el-tooltip effect="dark" :content="fullscreen?`取消全屏`:`全屏`" placement="bottom">
+                        <i class="el-icon-rank"></i>
+                    </el-tooltip>
+                </div>
+                <!-- 消息中心 -->
+                <div class="btn-bell">
+                    <el-tooltip
+                        effect="dark"
+                        :content="message?`有${message}条未读消息`:`消息中心`"
+                        placement="bottom"
+                    >
+                        <router-link to="/tabs">
+                            <i class="el-icon-bell"></i>
+                        </router-link>
+                    </el-tooltip>
+                    <span class="btn-bell-badge" v-if="message"></span>
+                </div>
+                <!-- 用户头像 -->
+                <div class="user-avator">
+                    <img src="../../../images/touxiiang.png"/>
+                </div>
+                <!-- 用户名下拉菜单 -->
+                <el-dropdown class="user-name" trigger="click" @command="handleCommand">
+                    <span class="el-dropdown-link">
+                        {{username}}
+                        <i class="el-icon-caret-bottom"></i>
+                    </span>
+                    <el-dropdown-menu slot="dropdown">
+                         <el-dropdown-item>修改资料</el-dropdown-item>
+                         <el-dropdown-item divided command="xiu">修改密码</el-dropdown-item>
+                         <el-dropdown-item>修改头像</el-dropdown-item>
+                        <el-dropdown-item divided command="loginout">退出系统</el-dropdown-item>
+                    </el-dropdown-menu>
+                </el-dropdown>
+            </div>
+        </div>
+    </div>
 </template>
-<style scoped>
-*{
-    overflow-x: hidden;
-     overflow-y: hidden;
-}
-  .el-header, .el-footer {
-    background-color:#373d41;
-    color: #e4e4e4;
-    line-height: 50px;
-  }
-  
-  .el-aside {
-    background-color: #D3DCE6;
-    color: #333;
-    text-align: center;
-    line-height: 200px;
-  }
-  
-  .el-main {
-    background-color: #E9EEF3;
-    color: #333;
-    text-align: center;
-    line-height: 160px;
-  }
-  
-  body > .el-container {
-    margin-bottom: 40px;
-  }
-  
-  .el-container:nth-child(5) .el-aside,
-  .el-container:nth-child(6) .el-aside {
-    line-height: 260px;
-  }
-  
-  .el-container:nth-child(7) .el-aside {
-    line-height: 320px;
-  }
-</style>
 <script>
+import bus from '../../public/bus';
 export default {
-name: "Header",
-  props: {
-    title:{
-      type: String,
-      default: "客户关系管理系统"
+    data() {
+        return {
+            collapse: false,
+            fullscreen: false,
+            name: 'linxin',
+            message: 2
+        };
+    },
+    computed: {
+        username() {
+            let username = localStorage.getItem('ms_username');
+            return username ? username : this.name;
+        }
+    },
+    methods: {
+        // 用户名下拉菜单选择事件
+        handleCommand(command) {
+            if (command == 'loginout') {
+                localStorage.removeItem('ms_username');
+                this.$router.push('/');
+            }
+              if (command == 'xiu') {
+                localStorage.removeItem('ms_username');
+                this.$router.push('/xiugaimima');
+            }
+        },
+        // // 侧边栏折叠
+        // collapseChage() {
+        //     this.collapse = !this.collapse;
+        //     bus.$emit('collapse', this.collapse);
+        // },
+        // 全屏事件
+        handleFullScreen() {
+            let element = document.documentElement;
+            if (this.fullscreen) {
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                } else if (document.webkitCancelFullScreen) {
+                    document.webkitCancelFullScreen();
+                } else if (document.mozCancelFullScreen) {
+                    document.mozCancelFullScreen();
+                } else if (document.msExitFullscreen) {
+                    document.msExitFullscreen();
+                }
+            } else {
+                if (element.requestFullscreen) {
+                    element.requestFullscreen();
+                } else if (element.webkitRequestFullScreen) {
+                    element.webkitRequestFullScreen();
+                } else if (element.mozRequestFullScreen) {
+                    element.mozRequestFullScreen();
+                } else if (element.msRequestFullscreen) {
+                    // IE11
+                    element.msRequestFullscreen();
+                }
+            }
+            this.fullscreen = !this.fullscreen;
+        }
+    },
+    mounted() {
+        if (document.body.clientWidth < 1500) {
+            this.collapseChage();
+        }
     }
-  }
-}
+};
 </script>
+<style scoped>
+.header {
+    position: relative;
+    box-sizing: border-box;
+    width: 100%;
+    height: 70px;
+    background-color:#373d41;
+    font-size: 22px;
+    color: #fff;
+}
+.tx{
+  position: relative;
+  top: 10px;
+}
+.collapse-btn {
+    float: left;
+    padding: 0 21px;
+    cursor: pointer;
+    line-height: 70px;
+}
+.header .logo {
+    float: left;
+    width: 250px;
+    line-height: 70px;
+}
+.header-right {
+    float: right;
+    padding-right: 50px;
+}
+.header-user-con {
+    display: flex;
+    height: 70px;
+    align-items: center;
+}
+.btn-fullscreen {
+    transform: rotate(45deg);
+    margin-right: 5px;
+    font-size: 24px;
+}
+.btn-bell,
+.btn-fullscreen {
+    position: relative;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    border-radius: 15px;
+    cursor: pointer;
+}
+.btn-bell-badge {
+    position: absolute;
+    right: 0;
+    top: -2px;
+    width: 8px;
+    height: 8px;
+    border-radius: 4px;
+    background: #f56c6c;
+    color: #fff;
+}
+.btn-bell .el-icon-bell {
+    color: #fff;
+}
+.user-name {
+    margin-left: 10px;
+}
+.user-avator {
+    margin-left: 20px;
+}
+.user-avator img {
+    display: block;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+.el-dropdown-link {
+    color: #fff;
+    cursor: pointer;
+}
+.el-dropdown-menu__item {
+    text-align: center;
+}
+</style>

@@ -3,20 +3,17 @@
     <Header></Header>
 <el-container>
   <div class="cx1">   
- <i class="el-icon-s-home"></i>&nbsp;
- <i class="el-icon-arrow-right"></i>
- <a>一级分类</a>
- <i class="el-icon-arrow-right"></i>
- <a>修改密码</a>
+ 
   </div>
   <el-container>
     <el-aside width="200px">
         <el-container style="height: 700px;">
-  
+          <Tags></Tags>
   </el-container>
     </el-aside>
     <el-main>
         <el-container style="height: 500px;">
+           <Tags></Tags>
   <el-form :model="ruleForm" status-icon :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
   <el-form-item label="密码" prop="pass">
     <el-input type="password" v-model="ruleForm.pass" autocomplete="off"></el-input>
@@ -124,6 +121,7 @@
 </style>
 <script>
 import Header from '../../components/public/header/Header'
+import Left from '../../components/public/left/Tags'
 export default {
   components:{
     Header

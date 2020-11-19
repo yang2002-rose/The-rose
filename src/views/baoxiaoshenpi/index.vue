@@ -1,81 +1,6 @@
 <template>
   <div class="about">
-<el-container>
-  <el-header>
-      <div>
-          <img src="../../images/logos.png" class="zyimg1" />
-          <span class="zyimg1-s">
-              <el-button @click="drawer = true" type="primary" style="margin-left: -15px;font-size: 18px; font-weight:600;  background-color:#373d41; border:#373d41;">
-                                      客户关系管理系统
-</el-button>
-<el-drawer
-  title="我是标题"
-  :visible.sync="drawer"
-  :direction="direction"
-  :with-header="false">
-  <span>
-      <el-row class="tac">
-        <el-col :span="12">
-    <h5 style="color:black; margin-left:32px; font-weight:600; font-size:18px">客户关系管理系统</h5>
-    <el-menu
-      default-active="2"
-      class="el-menu-vertical-demo"
-      @open="handleOpen"
-      @close="handleClose">
-      <el-submenu index="1">
-        <template slot="title">
-          <i class="el-icon-location"></i>
-          <span>导航一</span>
-        </template>
-        <el-menu-item-group>
-          <template slot="title">分组一</template>
-          <el-menu-item index="1-1">选项1</el-menu-item>
-          <el-menu-item index="1-2">选项2</el-menu-item>
-        </el-menu-item-group>
-        <el-menu-item-group title="分组2">
-          <el-menu-item index="1-3">选项3</el-menu-item>
-        </el-menu-item-group>
-        <el-submenu index="1-4">
-          <template slot="title">选项4</template>
-          <el-menu-item index="1-4-1">选项1</el-menu-item>
-        </el-submenu>
-      </el-submenu>
-      <el-menu-item index="2">
-        <i class="el-icon-menu"></i>
-        <span slot="title">导航二</span>
-      </el-menu-item>
-      <el-menu-item index="3" disabled>
-        <i class="el-icon-document"></i>
-        <span slot="title">导航三</span>
-      </el-menu-item>
-      <el-menu-item index="4">
-        <i class="el-icon-setting"></i>
-        <span slot="title">导航四</span>
-      </el-menu-item>
-    </el-menu>
-  </el-col>
-</el-row>
-  </span>
-</el-drawer>
-          </span>
-          <el-autocomplete class="zyimg1ss" v-model="state" :fetch-suggestions="querySearchAsync" suffix-icon="el-icon-search" placeholder="请输入内容" @select="handleSelect"></el-autocomplete>
-      <div class="zyimg1sss">
-          <el-dropdown @command="handleCommand">
-  <span class="el-dropdown-link"><i class="el-icon-s-custom"></i>
-    admin<i class="el-icon-arrow-down el-icon--right"></i>
-  </span>
-  <el-dropdown-menu slot="dropdown">
-    <el-dropdown-item command="a">修改资料</el-dropdown-item>
-    <el-dropdown-item command="b">
-      <router-link tag="p" to="/xiugaimima">修改密码</router-link>
-    </el-dropdown-item>
-    <el-dropdown-item command="c">修改头像</el-dropdown-item>
-    <el-dropdown-item command="d">退出系统</el-dropdown-item>
-  </el-dropdown-menu>
-</el-dropdown>
-      </div>
-      </div>
-  </el-header>
+  <Header></Header>
   <div class="cx1">   
  <i class="el-icon-s-home"></i>&nbsp;
  <i class="el-icon-arrow-right"></i>
@@ -83,6 +8,13 @@
  <i class="el-icon-arrow-right"></i>
  <a>报销审批</a>
   </div>
+  <br>
+  <el-container style="height: 500px; border: 1px solid #eee">
+  <el-aside width="180px" style="background-color: rgb(238, 241, 246); position:relative;left:-25px;">
+   <Tags></Tags>
+  </el-aside>
+  
+  <el-container>
   <div class="cxs1">
       <br>
       <div class="cxs1-1">
@@ -150,41 +82,41 @@
      <el-table-column
       prop="sjbt"
       label="报销单号"
-      width="140">
+      width="120">
     </el-table-column>
       <el-table-column
       prop="sjbt"
       label="报销金额"
-      width="140">
+      width="120">
     </el-table-column>
    <el-table-column
       label="报销人员"
-      width="140">
+      width="120">
       <template slot-scope="scope">{{ scope.row.date }}</template>
     </el-table-column>
     <el-table-column
       prop="sjjd"
       label="报销部门"
-      width="140">
+      width="120">
     </el-table-column>
     <el-table-column
       prop="bjzje"
       label="审批类型"
-      width="140">
+      width="120">
     </el-table-column>
     <el-table-column
       prop="bjzje"
       label="提交日期"
-      width="140">
+      width="120">
     </el-table-column>
     <el-table-column
       prop="bjzje"
       label="审批时间"
-      width="140">
+      width="120">
     </el-table-column>
      <el-table-column
      label="操作"
-      width="240">
+      width="220">
        <el-button @click="handleClick(scope.row)" icon="el-icon-edit" type="text" size="small">详情</el-button>
     </el-table-column>
      
@@ -213,7 +145,8 @@
 </el-pagination></p>
       </div>
   </div>
-</el-container>
+  </el-container>
+  </el-container>
   </div>
 </template>
 <style scoped>
@@ -282,7 +215,9 @@
       left: 1230px;
   }
   .cx1{
-   height: 40px;
+   height: 30px;
+   position:relative;
+      top:7px;
   }
   .cx1 i{
       position:relative;
@@ -324,7 +259,7 @@
       color: red;
   }
   .inputs1{
-      width: 176px;
+      width: 136px;
   }
   .buts1{
        position:relative;
@@ -344,15 +279,21 @@
   }
   .gjms1{
       position:relative;
-      left: 940px;
+      left: 737px;
   }
   .gjms2{
       position:relative;
-      left: 940px;
+      left: 737px;
   }
 </style>
 <script>
+import Tags from '../../components/public/left/Tags'
+import Header from '../../components/public/header/Header'
 export default {
+  components:{
+    Header,
+    Tags
+  },
     data() {
       return { 
           drawer: false,

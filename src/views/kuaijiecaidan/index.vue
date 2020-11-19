@@ -1,928 +1,248 @@
 <template>
-    <div>
-        <el-container style="height: 1000px; border: 1px solid #eee;">
-            <el-aside width="220px" style="background-color: rgb(238, 241, 246);overflow-y:hidden; ">
-                <div class="ss1">
-                    <div class="ss1-1">
-                        <img src="../../images/1.png">
-                    </div>
-                    
-                        <div class="ss1-2" @click="tab" name="1" >
-                            <i class="el-icon-s-unfold ss1-2-1"></i>
-                            <p class="ss1-2-2">快捷菜单</p>
-                            <i class="el-icon-caret-left ss1-2-3"></i>
-                        </div>
-                    
-                    <div class="ss1-2">
-                        <i class="el-icon-s-custom ss1-2-1"></i>
-                        <p class="ss1-2-2">客户管理</p>
-                        <i class="el-icon-caret-left ss1-2-3" style="display: none;"></i>
-                    </div>
-                    
-                    <div class="ss1-2">
-                        <i class="el-icon-discover ss1-2-1"></i>
-                        <p class="ss1-2-2">商机管理</p>
-                        <i class="el-icon-caret-left ss1-2-3" style="display: none;"></i>
-                    </div>
-                    <div class="ss1-2">
-                        <i class="el-icon-document ss1-2-1"></i>
-                        <p class="ss1-2-2">订单管理</p>
-                        <i class="el-icon-caret-left ss1-2-3" style="display: none;"></i>
-                    </div>
-                    <div class="ss1-2" >
-                        <i class="el-icon-date ss1-2-1"></i>
-                        <p class="ss1-2-2">财务管理</p>
-                        <i class="el-icon-caret-left ss1-2-3" style="display: none;"></i>
-                    </div>
-                    <div class="ss1-2">
-                        <i class="el-icon-edit ss1-2-1"></i>
-                        <p class="ss1-2-2">审批管理</p>
-                        <i class="el-icon-caret-left ss1-2-3" style="display: none;"></i>
-                    </div>
-                    <div class="ss1-2">
-                        <i class="el-icon-data-line ss1-2-1"></i>
-                        <p class="ss1-2-2">统计报表</p>
-                        <i class="el-icon-caret-left ss1-2-3" style="display: none;"></i>
-                    </div>
-                    <div class="ss1-2">
-                        <i class="el-icon-edit-outline ss1-2-1"></i>
-                        <p class="ss1-2-2">工单管理</p>
-                        <i class="el-icon-caret-left ss1-2-3" style="display: none;"></i>
-                    </div>
-                    <div class="ss1-2">
-                        <i class="el-icon-message ss1-2-1"></i>
-                        <p class="ss1-2-2">办公申请</p>
-                        <i class="el-icon-caret-left ss1-2-3" style="display: none;"></i>
-                    </div>
-                    <div class="ss1-2">
-                        <i class="el-icon-s-platform ss1-2-1"></i>
-                        <p class="ss1-2-2">办公管理</p>
-                        <i class="el-icon-caret-left ss1-2-3" style="display: none;"></i>
-                    </div>
-                    <div class="ss1-2">
-                        <i class="el-icon-service ss1-2-1"></i>
-                        <p class="ss1-2-2">营销工具</p>
-                        <i class="el-icon-caret-left ss1-2-3" style="display: none;"></i>
-                    </div>
-                </div>
-                <template v-show="curId===0">
-                   
-                
-                <div class="ss2">
-                    <div class="ss2-1">
-                        <p class="ss2-1-1">快捷菜单</p>
-                        <i class="el-icon-s-tools ss2-1-2"></i>
-                    </div>
-                    <div class="ss2-2" @click="index1">
-                        <p class="ss2-2-1">系统首页</p>                        
-                    </div>
-                    <div class="ss2-2" @click="index2">
-                        <p class="ss2-2-1">客户列表</p>                        
-                    </div>
-                    <div class="ss2-2" @click="index3">
-                        <p class="ss2-2-1">客户筛选</p>                        
-                    </div>
-                    <div class="ss2-2" @click="index4">
-                        <p class="ss2-2-1">销售线索</p>                        
-                    </div>
-                    <div class="ss2-2" @click="index5">
-                        <p class="ss2-2-1">全部商机</p>                        
-                    </div>
-                    <div class="ss2-2" @click="index6">
-                        <p class="ss2-2-1">全部订单</p>                        
-                    </div>
-                    <div class="ss2-2" @click="index7">
-                        <p class="ss2-2-1">回款管理</p>                        
-                    </div>
-                    <div class="ss2-2" @click="index8">
-                        <p class="ss2-2-1">回款审批</p>                        
-                    </div>
-                    <div class="ss2-2">
-                        <p class="ss2-2-1">报销审批</p>                        
-                    </div>
-                    <div class="ss2-2">
-                        <p class="ss2-2-1">全部工单</p>                        
-                    </div>
-                    <div class="ss2-2">
-                        <p class="ss2-2-1">系统公告</p>                        
-                    </div>
-                    <div class="ss2-2">
-                        <p class="ss2-2-1">内部消息</p>                        
-                    </div>
-                    <div class="ss2-2">
-                        <p class="ss2-2-1">业绩目标</p>                        
-                    </div>
-                    <div class="ss2-2">
-                        <p class="ss2-2-1">营销活动</p>                        
-                    </div>
-                </div>
-                </template>
-                <template v-show="curId===1">
-                <div>
-                    <div class="ss2-2">
-                        <p class="ss2-2-1">营销11111111111111111活动</p>                        
-                    </div>
-                </div>
-                </template>
-               
-            </el-aside>
-  
-        <el-container>
-    <el-header style=" font-size: 12px;background-color:#FFFFFF;position: relative;border-bottom: 1px solid #F2F2F2;">
-        <el-dropdown>
-            <span class="el-dropdown-link">
-                <i class="el-icon-circle-plus"></i>快速新建
-            </span>
-            <el-dropdown-menu slot="dropdown">
-            <el-dropdown-item>新建任务</el-dropdown-item>
-            <el-dropdown-item>新建跟进</el-dropdown-item>
-            <el-dropdown-item>新建日程</el-dropdown-item>
-            <el-dropdown-item disabled>新建工单</el-dropdown-item>
-        </el-dropdown-menu>
-        <!-- <div class="demo-input-suffix"> -->
-    <el-input placeholder="请输入内容" v-model="input4" class="sc1">
-        <i slot="prefix" class="el-input__icon el-icon-search"></i>
-    </el-input>
-    <div class="sc3">
-            <span class="sc3-1">
-                <i class="el-icon-s-claim"></i>事项
-            </span>
-            
-            <span class="sc3-1">
-                <i class="el-icon-date"></i>日程
-            </span>
-            
-
-            <span class="sc3-1">
-                <i class="el-icon-message-solid"></i>消息
-            </span>
-
-            <span class="sc3-1">
-                <i class="el-icon-unlock"></i>锁屏
-            </span>
-
-             <span class="sc3-1">
-                <i class="el-icon-s-tools"></i>管理
-            </span>
-
-
-             <span class="sc3-1">
-                <i class="el-icon-user-solid"></i>Admin
-            </span>
+  <div class="about">
+    <Header></Header>
+<div>
+    <Tags></Tags>
 </div>
-<!-- </div> -->
-  
-</el-dropdown>
-      
-    </el-header>
-    <el-header style=" font-size: 12px;background-color:#FFFFFF;position: relative;border-bottom: 1px solid #F2F2F2;">
-        <el-dropdown>
-            <div class="sc4">
-                <i class="el-icon-s-home" style="float: left;">
-                    <i class="el-icon-arrow-right">一级分类</i>
-                    <i class="el-icon-arrow-right">系统首页</i>
-                </i>
-            </div>
-            
-            <div class="sc5">
-                <i class="el-icon-arrow-left"></i>
-                <i class="el-icon-refresh"></i>
-            </div>
-        </el-dropdown> 
-    </el-header>
-
-    <el-main class="sc6">
-        <el-container style="width:1250px;margin-left: 190px;margin-top: 20px;">
-            <el-header class="sc6-1" style="background-color: #F9F9F9;">
-                <p class="sc6-1-1">快速新建</p>
-            </el-header>
-            <el-main>
-                <div class="sc6-2">
-                    <i class="el-icon-user sc6-2-1"></i>
-                    <p class="sc6-2-2">新建客户</p>
-                </div>
-                <div class="sc6-2">
-                    <i class="el-icon-s-opportunity sc6-2-1"></i>
-                    <p class="sc6-2-2">新建线索</p>
-                </div>
-                <div class="sc6-2">
-                    <i class="el-icon-discover sc6-2-1"></i>
-                    <p class="sc6-2-2">新建商机</p>
-                </div>
-                <div class="sc6-2">
-                    <i class="el-icon-document sc6-2-1"></i>
-                    <p class="sc6-2-2">新建订单</p>
-                </div>
-                <div class="sc6-2">
-                    <i class="el-icon-s-custom sc6-2-1"></i>
-                    <p class="sc6-2-3">新建联系人</p>
-                </div>
-                <div class="sc6-2">
-                    <i class="el-icon-edit sc6-2-1"></i>
-                    <p class="sc6-2-2">写新跟进</p>
-                </div>
-                <div class="sc6-2">
-                    <i class="el-icon-folder-checked sc6-2-1"></i>
-                    <p class="sc6-2-2">新建任务</p>
-                </div>
-                <div class="sc6-2">
-                    <i class="el-icon-document-checked sc6-2-1"></i>
-                    <p class="sc6-2-2">新建工单</p>
-                </div>
-                <div class="sc6-2">
-                    <i class="el-icon-document-copy sc6-2-1"></i>
-                    <p class="sc6-2-3">新建回款单</p>
-                </div>
-                <div class="sc6-2">
-                    <i class="el-icon-aim sc6-2-1"></i>
-                    <p class="sc6-2-2">回款计划</p>
-                </div>
-            </el-main>
-
-            <div style="width:1250px;margin-top: 20px;height: 400px;">
-                <div style=" float: left;width:620px;margin-top: 0px;height: 400px;">
-                    <div style=" float: left;width:620px;margin-top: 0px;background-color: #F9F9F9;height: 70px;">
-                        <p class="biu1">数据简报</p>
-                        <el-select v-model="select" class="biu2" slot="prepend" placeholder="公司简报">
-                            <!-- <el-option label="餐厅名" value="1"></el-option>
-                            <el-option label="订单号" value="2"></el-option>
-                            <el-option label="用户电话" value="3"></el-option> -->
-                        </el-select>
-                        <el-select v-model="select" class="biu3" slot="prepend" placeholder="本周">
-                            <!-- <el-option label="餐厅名" value="1"></el-option>
-                            <el-option label="订单号" value="2"></el-option>
-                            <el-option label="用户电话" value="3"></el-option> -->
-                        </el-select>
-                    </div>
-                    <div style=" float: left;width:620px;margin-top: 0px;background-color: #FFF;height: 330px;">
-                        <div class="biu4">
-                            <p class="biu4-1">新增客户</p>
-                            <p class="biu4-2">200</p>
-                        </div>
-                        <div class="biu4">
-                            <p class="biu4-1">新增线索</p>
-                            <p class="biu4-2">200</p>
-                        </div>
-                        <div class="biu4">
-                            <p class="biu4-1">新增商机</p>
-                            <p class="biu4-2">200</p>
-                        </div>
-                        <div class="biu4">
-                            <p class="biu4-1">新增订单</p>
-                            <p class="biu4-2">200</p>
-                        </div>
-                        <div class="biu4">
-                            <p class="biu4-1">新增联系人</p>
-                            <p class="biu4-2">200</p>
-                        </div>
-                        <div class="biu4">
-                            <p class="biu4-1">跟进次数</p>
-                            <p class="biu4-2">200</p>
-                        </div>
-                        <div class="biu4">
-                            <p class="biu4-1">处理任务</p>
-                            <p class="biu4-2">200</p>
-                        </div>
-                        <div class="biu4">
-                            <p class="biu4-1">处理工单</p>
-                            <p class="biu4-2">200</p>
-                        </div>
-                    </div>
-                </div>
-                <div style=" float: left;width:620px;margin-top: 0px;margin-left: 10px;background-color: #F9F9F9;height: 400px;">
-                    <div style=" float: left;width:620px;margin-top: 0px;background-color: #F9F9F9;height: 70px;">
-                         <p class="biu1">系统公告</p>
-                         <el-popover placement="right" width="400" trigger="click" class="biu5">
-                            <el-table :data="gridData">
-                                <el-table-column width="150" property="date" label="日期"></el-table-column>
-                                <el-table-column width="100" property="name" label="姓名"></el-table-column>
-                                <el-table-column width="300" property="address" label="地址"></el-table-column>
-                            </el-table>
-                            <el-button slot="reference">
-                                <i class="el-icon-plus"></i>
-                                发布公告
-                            </el-button>
-                        </el-popover>
-                        <el-button class="biu6">
-                            查看更多
-                            <i class="el-icon-arrow-right"></i>
-                        </el-button>
-                    </div>
-                    <div style=" float: left;width:620px;margin-top: 0px;background-color: #FFF;height: 330px;">
-                        <div class="biu10">
-                        <span class="biu7">【内部分享】</span>
-                        <p class="biu8">如何建立良好的客户关系</p>
-                        <i class="el-icon-timer biu9">2019-04-10 09:00</i>
-                        <el-divider class="biu10"></el-divider>
-                        </div>
-                        <div class="biu11">
-                        <span class="biu7">【内部分享】</span>
-                        <p class="biu8">如何建立良好的客户关系</p>
-                        <i class="el-icon-timer biu9">2019-04-10 09:00</i>
-                        <el-divider class="biu10"></el-divider>
-                        </div>
-                        <div class="biu11">
-                        <span class="biu7">【内部分享】</span>
-                        <p class="biu8">如何建立良好的客户关系</p>
-                        <i class="el-icon-timer biu9">2019-04-10 09:00</i>
-                        <el-divider class="biu10"></el-divider>
-                        </div>
-                        <div class="biu11">
-                        <span class="biu7">【内部分享】</span>
-                        <p class="biu8">如何建立良好的客户关系</p>
-                        <i class="el-icon-timer biu9">2019-04-10 09:00</i>
-                        <el-divider class="biu10"></el-divider>
-                        </div>
-                        <div class="biu11">
-                        <span class="biu7">【内部分享】</span>
-                        <p class="biu8">如何建立良好的客户关系</p>
-                        <i class="el-icon-timer biu9">2019-04-10 09:00</i>
-                        <el-divider class="biu10"></el-divider>
-                        </div>
-                        <div class="biu11">
-                        <span class="biu7">【内部分享】</span>
-                        <p class="biu8">如何建立良好的客户关系</p>
-                        <i class="el-icon-timer biu9">2019-04-10 09:00</i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div style="width:1250px;margin-top: 20px;height: 400px;">
-                <div style=" float: left;width:620px;margin-top: 0px;height: 400px;">
-                    <div style=" float: left;width:620px;margin-top: 0px;background-color: #F9F9F9;height: 70px;">
-                         <p class="biu1">业绩目标</p>
-                        <el-select v-model="select" class="biu2" slot="prepend" placeholder="公司目标">
-                            
-                        </el-select>
-                        
-                        <el-input placeholder="2019-05" suffix-icon="el-icon-date" class="biu3" v-model="input1">
-                        </el-input>
-                    </div>
-                    <div style=" float: left;width:620px;margin-top: 0px;background-color: #FFF;height: 330px;">
-                           <img src="../../images/2.png">
-                    </div>
-                </div>
-                <div style=" float: left;width:620px;margin-top: 0px;margin-left: 10px;background-color: #F9F9F9;height: 400px;">
-                    <div style=" float: left;width:620px;margin-top: 0px;background-color: #F9F9F9;height: 70px;">
-                        <p class="biu1">业绩排行</p>
-                        <el-select v-model="select" class="biu2" slot="prepend" placeholder="个人排行">
-                            
-                        </el-select>
-                        
-                        <el-input placeholder="2019-05" suffix-icon="el-icon-date" class="biu3" v-model="input1">
-                        </el-input>
-                    </div>
-                    <div style=" float: left;width:620px;margin-top: 0px;background-color: #FFF;height: 330px;">
-                           <img src="../../images/3.png">
-                    </div>
-                </div>
-            </div>
-
-            <div style="width:1250px;margin-top: 20px;height: 400px;">
-                <div style=" float: left;width:620px;margin-top: 0px;height: 400px;">
-                    <div style=" float: left;width:620px;margin-top: 0px;background-color: #F9F9F9;height: 70px;">
-                        <p class="biu1">销售预测</p>
-                        <el-select v-model="select" class="giao1" slot="prepend" placeholder="公司数据">
-                            <!-- <el-option label="餐厅名" value="1"></el-option>
-                            <el-option label="订单号" value="2"></el-option>
-                            <el-option label="用户电话" value="3"></el-option> -->
-                        </el-select>
-                        
-                    </div>
-                    <div style=" float: left;width:620px;margin-top: 0px;background-color: #FFF;height: 330px;">
-                            <img src="../../images/4.png">
-                    </div>
-                </div>
-                <div style=" float: left;width:620px;margin-top: 0px;margin-left: 10px;background-color: #F9F9F9;height: 400px;">
-                    <div style=" float: left;width:620px;margin-top: 0px;background-color: #F9F9F9;height: 70px;">
-                        <p class="biu1">销售漏斗</p>
-                        <el-select v-model="select" class="biu2" slot="prepend" placeholder="公司数据"></el-select>
-                       <el-input placeholder="2019-05" suffix-icon="el-icon-date" class="biu3" v-model="input1">
-                        </el-input>
-                    </div>
-                    <div style=" float: left;width:620px;margin-top: 0px;background-color: #FFF;height: 330px;">
-                           <img src="../../images/5.png">
-                    </div>
-                </div>
-            </div>
-
-            <div style="width:1250px;margin-top: 20px;height: 400px;">
-                <div style=" float: left;width:620px;margin-top: 0px;height: 400px;">
-                    <div style=" float: left;width:620px;margin-top: 0px;background-color: #F9F9F9;height: 70px;">
-                        <p class="biu1">工作报告</p>
-                        <el-select v-model="select" class="giao2" slot="prepend" placeholder="提交给我的"></el-select>
-                       <el-popover placement="right" width="400" trigger="click" class="giao3">
-                            <el-table :data="gridData">
-                                <el-table-column width="150" property="date" label="日期"></el-table-column>
-                                <el-table-column width="100" property="name" label="姓名"></el-table-column>
-                                <el-table-column width="300" property="address" label="地址"></el-table-column>
-                            </el-table>
-                            <el-button slot="reference">
-                                <i class="el-icon-plus"></i>
-                                写新报告
-                            </el-button>
-                        </el-popover>
-                        <el-button class="biu6">
-                            查看更多
-                            <i class="el-icon-arrow-right"></i>
-                        </el-button>
-                    </div>
-                    <div style=" float: left;width:620px;margin-top: 0px;background-color: #FFF;height: 330px;">
-                        <div class="biu10">
-                        <span class="giao4">2019-04-22 工作日报</span>
-                        <el-avatar :size="size" :src="circleUrl" class="giao5"></el-avatar>
-                        <p class="giao6">赵小刚</p>
-                        <p class="giao7">未批阅</p>
-                        <i class="el-icon-circle-plus giao8">详情</i>
-                        <el-divider class="biu10"></el-divider>
-                        </div>
-                        <div class="biu11">
-                        <span class="giao4">2019-04-22 工作日报</span>
-                        <el-avatar :size="size" :src="circleUrl" class="giao5"></el-avatar>
-                        <p class="giao6">赵小刚</p>
-                        <p class="giao7">未批阅</p>
-                        <i class="el-icon-circle-plus giao8">详情</i>
-                        <el-divider class="biu10"></el-divider>
-                        </div>
-                        <div class="biu11">
-                        <span class="giao4">2019-04-22 工作日报</span>
-                        <el-avatar :size="size" :src="circleUrl" class="giao5"></el-avatar>
-                        <p class="giao6">赵小刚</p>
-                        <p class="giao7">未批阅</p>
-                        <i class="el-icon-circle-plus giao8">详情</i>
-                        <el-divider class="biu10"></el-divider>
-                        </div>
-                        <div class="biu11">
-                        <span class="giao4">2019-04-22 工作日报</span>
-                        <el-avatar :size="size" :src="circleUrl" class="giao5"></el-avatar>
-                        <p class="giao6">赵小刚</p>
-                        <p class="giao7">未批阅</p>
-                        <i class="el-icon-circle-plus giao8">详情</i>
-                        <el-divider class="biu10"></el-divider>
-                        </div>
-                        <div class="biu11">
-                        <span class="giao4">2019-04-22 工作日报</span>
-                        <el-avatar :size="size" :src="circleUrl" class="giao5"></el-avatar>
-                        <p class="giao6">赵小刚</p>
-                        <p class="giao7">未批阅</p>
-                        <i class="el-icon-circle-plus giao8">详情</i>
-                        <el-divider class="biu10"></el-divider>
-                        </div>
-                        <div class="biu11">
-                        <span class="giao4">2019-04-22 工作日报</span>
-                        <el-avatar :size="size" :src="circleUrl" class="giao5"></el-avatar>
-                        <p class="giao6">赵小刚</p>
-                        <p class="giao7">未批阅</p>
-                        <i class="el-icon-circle-plus giao8">详情</i>
-                       
-                        </div>
-                    </div>
-                </div>
-                <div style=" float: left;width:620px;margin-top: 0px;margin-left: 10px;background-color: #F9F9F9;height: 400px;">
-                    <div style=" float: left;width:620px;margin-top: 0px;background-color: #F9F9F9;height: 70px;">
-                        <p class="biu1">日程日历</p>
-                        <el-select v-model="select" class="giao2" slot="prepend" placeholder="我的日程"></el-select>
-                       <el-popover placement="right" width="400" trigger="click" class="giao3">
-                            <el-table :data="gridData">
-                                <el-table-column width="150" property="date" label="日期"></el-table-column>
-                                <el-table-column width="100" property="name" label="姓名"></el-table-column>
-                                <el-table-column width="300" property="address" label="地址"></el-table-column>
-                            </el-table>
-                            <el-button slot="reference">
-                                <i class="el-icon-plus"></i>
-                                新建日程
-                            </el-button>
-                        </el-popover>
-                        <el-button class="biu6">
-                            日程管理
-                            <i class="el-icon-arrow-right"></i>
-                        </el-button>
-                    </div>
-                    <div style=" float: left;width:620px;margin-top: 0px;background-color: #FFF;height: 330px;">
-                        <!-- <el-calendar v-model="value"></el-calendar> -->
-                           <img src="../../images/6.png">
-                    </div>
-                </div>
-            </div>
-            <div style="float: left;width:620px;margin-top: 15px;margin-left: 310px;height: 200px;position: relative;">
-                <p class="s1">Copyright ? www.AxureUX.com, All Rights Reserved.</p>
-
-                <p class="s2">助你快速打造友好美观的交互原型</p>
-            </div>
-        </el-container>
-    </el-main>
-  </el-container>
-</el-container>
-    </div>
+  </div>
 </template>
-<script>
-  export default {
-    data() {
-        
-    //   const item = {
-    //     date: '2016-05-02',
-    //     name: '王小虎',
-    //     address: '上海市普陀区金沙江路 1518 弄',
-   
-        
-    //   }
-      return {
-        // tableData: Array(20).fill(item),
-         value: new Date(),
-        name:0,
-             input3: '',
-      input4: '',
-       circleUrl: "https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png",
-        squareUrl: "https://cube.elemecdn.com/9/c2/f0ee8a3c7c9638a54940382568c9dpng.png",
-        sizeList: ["large", "medium", "small"],
-      gridData: [{
-          date: '2016-05-02',
-          name: '王小虎',
-          address: '上海市普陀区金沙江路 1518 弄'
-        }, {
-          date: '2016-05-04',
-          name: '王小虎',
-          address: '上海市普陀区金沙江路 1518 弄'
-        }, {
-          date: '2016-05-01',
-          name: '王小虎',
-          address: '上海市普陀区金沙江路 1518 弄'
-        }, {
-          date: '2016-05-03',
-          name: '王小虎',
-          address: '上海市普陀区金沙江路 1518 弄'
-        }]
-        
-      }
-    },
-    methods: {
-         index1:function(){
-             this.$router.push('/index1')
-        },
-        index2:function(){
-             this.$router.push('/index2')
-        },
-        index3:function(){
-             this.$router.push('/index3')
-        },
-        index4:function(){
-             this.$router.push('/index4')
-        }
-        ,index5:function(){
-             this.$router.push('/index5')
-        },
-        index6:function(){
-             this.$router.push('/index6')
-        }
-        ,
-        index7:function(){
-             this.$router.push('../qingjiashenqing')
-        }
-        ,
-        index8:function(){
-             this.$router.push('/index8')
-        }
-        
-    }
-  };
-</script>
 <style scoped>
-.s1{
-    position: absolute;
-        font-size: 13px;
-    top: 65px;
-    left: 130px;
+*{
+    overflow-x: hidden;
+     overflow-y: hidden;
 }
-.s2{
-    position: absolute;
-    font-size: 13px;
-    top: 100px;
-    left: 190px;
-}
-
-/* ::v-deep.el-calendar__body{
-    height: 300px !important;
-}
-::v-deep.el-calendar-table{
-    height: 300px !important;
-}
-::v-deep.el-calendar-table__row{
-    height:50px !important;
-} */
-.set-maxWidth{
-    margin-right: auto;
-    margin-left: auto;
-    max-width: 1366px;
-    width:100%;
-}
-.giao4{
-    float: left;
-    margin-top: 10px;
-    margin-left: 10px;
-}
-.giao5{
-    float: left;
-   width: 20px;
-    height: 20px;
-    margin-top: 10px;
-    margin-left: 90px;
-}
-.giao6{
-    float: left;
-    font-size: 13px;
-    margin-top: 10px;
-    margin-left: 5px;
-}
-.giao7{
-    float: left;
-    margin-top: 10px;
-    margin-left: 100px;
-}
-.giao8{
-     float: left;
-    margin-top: 10px;
-    margin-left: 90px;
-}
-.giao3{
-        float: left;
-    margin-top: 13px;
-    
-    margin-left: 10px;
-}
-.giao2{
-        float: left;
-    margin-top: 13px;
-    width: 170px;
-    margin-left: 100px;
-}
-.giao1{
-        float: left;
-    margin-top: 13px;
-    width: 170px;
-    margin-left: 350px;
-}
-.biu11{
-     float: left;
-    margin-top: -15px;
-}
-.biu10{
-     float: left;
-    margin-top: 0px;
-}
-.biu7{
-    float: left;
-    margin-top: 10px;
-    margin-left: 5px;
-    font-weight: bolder;
-    color: black;
-}
-.biu8{
-    float: left;
-    margin-top: 10px;
-    margin-left: 0px;
-}
-.biu9{
-    float: left;
-    margin-top: 10px;
-    margin-left: 175px;
-}
-.biu6{
-        float: left;
-    margin-top: 13px;
-   margin-left: 10px;
-}
-.biu5{
-        float: left;
-    margin-top: 13px;
-    
-    margin-left: 275px;
-}
-.sc6-2:hover{
-    border: 1px solid #E4E4E4;
-    background-color: #F9F9F9;
-}
-.biu4{
-    float: left;
-    width: 95px;
-    height: 95px;
-    margin-top: 50px;
-    margin-left: 50px;
-    cursor: pointer;
-}
-.biu4-1{
-    text-align: center;
-        font-size: 13px;
-
-}
-.biu4-2{
-    text-align: center;
-    font-size: 18px;
-        line-height: 20px;
-        font-weight: bolder;
-}
-.biu4-2:hover{
-    color: black;
-}
-.biu2{
-        float: left;
-    margin-top: 13px;
-    width: 170px;
-    margin-left: 170px;
-}
-.biu3{
-        float: left;
-    margin-top: 13px;
-    width: 170px;
-    margin-left: 10px;
-}
-.biu1{
-    float: left;
-    margin-top: 25px;
-    margin-left: 20px;
-    color: black;
-    font-weight: bold;
-}
-
-.sc6-2{
-    float: left;
-    width: 80px;
-    height: 80px;
-    border: 1px solid #FFFFFF;
-    margin-top: 20px;
-    margin-left: 35px;
-    border-radius: 10px;
-    cursor: pointer;
-}
-.sc6-2-1{
-    font-size: 50px;
-        float: left;
-    margin-left: 15px;
-    margin-top: 2px;
-}
-.sc6-2-2{
-      float: left;
-    margin-left: 10px;
-    margin-top: 2px;
-}
-.sc6-2-3{
-      float: left;
-          font-size: 12px;
-    margin-left: 10px;
-    margin-top: 4px;
-}
-.sc6-1{
-    position: relative;
-}
-.sc6-1-1{
-    position: absolute;
-   top: -15px;
-    left: 20px;
-}
-.el-main {
-    background-color: #FFFFFF;
-    color: #999999;
-   height: 150px;
-  }
-  .el-header {
-    background-color: #B3C0D1;
-    color: #333;
-    line-height: 60px;
+  .el-header, .el-footer {
+    background-color:#373d41;
+    color: #e4e4e4;
+    line-height: 50px;
   }
   
   .el-aside {
+    background-color: #D3DCE6;
     color: #333;
+    text-align: center;
+    line-height: 200px;
   }
-  .ss1{
-      float: left;
-      width: 70px;
-      background: #333744;
-        
-      height: 1000px;
-      
+  
+  .el-main {
+    background-color: #D3DCE6;
+    color: #333;
+    text-align: center;
+    line-height: 160px;
   }
-  .ss1-1{
-      float: left;
-      margin-left: 5px;
-      margin-top: 10px;
+  
+  body > .el-container {
+    margin-bottom: 40px;
   }
-  .ss1-2{
-      float: left;
-      width: 70px;
-      height: 70px;
-      /* border: 1px solid #FFF; */
-      margin-top: 10px;
-      position: relative;
+  
+  .el-container:nth-child(5) .el-aside,
+  .el-container:nth-child(6) .el-aside {
+    line-height: 260px;
+  }
+  
+  .el-container:nth-child(7) .el-aside {
+    line-height: 320px;
+  }
+  .zyimg1{
+      margin: 10px;
+      top: 15px;
+  }
+  .zyimg1-s{
+      font-size: 18px;
+      position:relative;
+      font-weight:600; 
+      top:-20px;
       cursor: pointer;
   }
-  .ss1-2-1{
-      position: absolute;
-      top: 10px;
-      left: 25px;
-      color: #FFF;
+  .zyimg1ss{
+       position:relative;
+      top:0px;
+      left: 500px;
   }
-  .ss1-2-2{
-     position: absolute;
-      top: 20px;
-      left: 7px;
-      color: #FFF;
-      font-size: 13px;
+  .el-dropdown-link {
+    cursor: pointer;
+    color: #E9EEF3;
   }
-  .ss1-2-3{
-      position: absolute;
-      top: 20px;
-      left: 59px;
-      color: #FFF;
+  .el-icon-arrow-down {
+    font-size: 12px;
   }
-
-  .ss2{
-      float: left;
-      width: 150px;
-      background: #FCFCFC;
-      height: 1000px;
-      
+  .zyimg1sss{
+ position:relative;
+      top:-70px;
+      left: 1230px;
   }
-  .ss2-1{
-      float: left;
-      width: 150px;
-      height: 40px;
-      position: relative;
+  .cx1{
+   height: 40px;
   }
-  .ss2-1-1{
-      position: absolute;
-      top: -3px;
-      left: 10px;
-      font-size: 14px;
-      font-weight: bold;
+  .cx1 i{
+      position:relative;
+      top:10px;
+      left: 35px;
   }
-  .ss2-1-2{
-      position: absolute;
-      top: 12px;
-      left: 110px;
-      cursor: pointer;
+  .cx1 a{
+      position:relative;
+      top:7px;
+      left: 35px;
+      font-size: 12px;
+      color: #999999;
   }
-  .ss2-2{
-      float: left;
-      width: 150px;
-      height: 50px;
-      position: relative;
-      cursor: pointer;
-  }
-  .ss2-2-1{
-      position: absolute;
-      top: 1px;
-      left: 30px;
-      font-size: 14px;
-      font-weight: bold;
-  }
-    .sc1{
-           position: absolute;
-    top: -5px;
-    left: 961px;
-    width: 240px;
-    height: 40px;
-
-    }
-    .sc2{
-        position: absolute;
-        top: 0px;
-        left: 0px;
-    }
-    .sc2 li{
-        float: left;
-        list-style: none;
-    }
-    .sc2 li i{
-        float: left;
-    }
-    .sc2 li p{
-        float: left;
-    }
-    .sc3{
-        position: absolute;
-        width: 410px;
-        height: 40px;
-
-        top: 0px;
-        left: 1220px;
-    }
-    .sc3-1{
-      float: left;
-      margin-left: 20px;
-    }
-    .sc4{
-        float: left;
-       margin-top: 20px;
-        margin-left: 10px;
-        
-    }
-    .sc5{
-        float: left;
-        margin-top: -2px;
-         margin-left: 1410px;
-    }
-    .sc6{
-        background-color: #F0F2F5;
-    }
 </style>
+<script>
+import Tags from '../../components/public/left/Tags'
+import Header from '../../components/public/header/Header'
+export default {
+  components:{
+    Header,
+    Tags
+  },
+    data() {
+     var checkAge = (rule, value, callback) => {
+        if (!value) {
+          return callback(new Error('年龄不能为空'));
+        }
+        setTimeout(() => {
+          if (!Number.isInteger(value)) {
+            callback(new Error('请输入数字值'));
+          } else {
+            if (value < 18) {
+              callback(new Error('必须年满18岁'));
+            } else {
+              callback();
+            }
+          }
+        }, 1000);
+      };
+      var validatePass = (rule, value, callback) => {
+        if (value === '') {
+          callback(new Error('请输入密码'));
+        } else {
+          if (this.ruleForm.checkPass !== '') {
+            this.$refs.ruleForm.validateField('checkPass');
+          }
+          callback();
+        }
+      };
+      var validatePass2 = (rule, value, callback) => {
+        if (value === '') {
+          callback(new Error('请再次输入密码'));
+        } else if (value !== this.ruleForm.pass) {
+          callback(new Error('两次输入密码不一致!'));
+        } else {
+          callback();
+        }
+      };
+      return { 
+          restaurants: [],
+        state: '',
+        timeout:  null,
+        ruleForm: {
+          pass: '',
+          checkPass: '',
+          age: ''
+        
+        },
+        rules: {
+          pass: [
+            { validator: validatePass, trigger: 'blur' }
+          ],
+          checkPass: [
+            { validator: validatePass2, trigger: 'blur' }
+          ],
+          age: [
+            { validator: checkAge, trigger: 'blur' }
+          ]
+        }
+      };
+    },
+    methods: {
+         handleCommand(command) {
+        this.$message('click on item ' + command);
+      },
+      submitForm(formName) {
+        this.$refs[formName].validate((valid) => {
+          if (valid) {
+            alert('submit!');
+          } else {
+            console.log('error submit!!');
+            return false;
+          }
+        });
+      },
+      resetForm(formName) {
+        this.$refs[formName].resetFields();
+      },
+      loadAll() {
+        return [
+          { "value": "三全鲜食（北新泾店）", "address": "长宁区新渔路144号" },
+          { "value": "Hot honey 首尔炸鸡（仙霞路）", "address": "上海市长宁区淞虹路661号" },
+          { "value": "新旺角茶餐厅", "address": "上海市普陀区真北路988号创邑金沙谷6号楼113" },
+          { "value": "泷千家(天山西路店)", "address": "天山西路438号" },
+          { "value": "胖仙女纸杯蛋糕（上海凌空店）", "address": "上海市长宁区金钟路968号1幢18号楼一层商铺18-101" },
+          { "value": "贡茶", "address": "上海市长宁区金钟路633号" },
+          { "value": "豪大大香鸡排超级奶爸", "address": "上海市嘉定区曹安公路曹安路1685号" },
+          { "value": "茶芝兰（奶茶，手抓饼）", "address": "上海市普陀区同普路1435号" },
+          { "value": "十二泷町", "address": "上海市北翟路1444弄81号B幢-107" },
+          { "value": "星移浓缩咖啡", "address": "上海市嘉定区新郁路817号" },
+          { "value": "阿姨奶茶/豪大大", "address": "嘉定区曹安路1611号" },
+          { "value": "新麦甜四季甜品炸鸡", "address": "嘉定区曹安公路2383弄55号" },
+          { "value": "Monica摩托主题咖啡店", "address": "嘉定区江桥镇曹安公路2409号1F，2383弄62号1F" },
+          { "value": "浮生若茶（凌空soho店）", "address": "上海长宁区金钟路968号9号楼地下一层" },
+          { "value": "NONO JUICE  鲜榨果汁", "address": "上海市长宁区天山西路119号" },
+          { "value": "CoCo都可(北新泾店）", "address": "上海市长宁区仙霞西路" },
+          { "value": "快乐柠檬（神州智慧店）", "address": "上海市长宁区天山西路567号1层R117号店铺" },
+          { "value": "Merci Paul cafe", "address": "上海市普陀区光复西路丹巴路28弄6号楼819" },
+          { "value": "猫山王（西郊百联店）", "address": "上海市长宁区仙霞西路88号第一层G05-F01-1-306" },
+          { "value": "枪会山", "address": "上海市普陀区棕榈路" },
+          { "value": "纵食", "address": "元丰天山花园(东门) 双流路267号" },
+          { "value": "钱记", "address": "上海市长宁区天山西路" },
+          { "value": "壹杯加", "address": "上海市长宁区通协路" },
+          { "value": "唦哇嘀咖", "address": "上海市长宁区新泾镇金钟路999号2幢（B幢）第01层第1-02A单元" },
+          { "value": "爱茜茜里(西郊百联)", "address": "长宁区仙霞西路88号1305室" },
+          { "value": "爱茜茜里(近铁广场)", "address": "上海市普陀区真北路818号近铁城市广场北区地下二楼N-B2-O2-C商铺" },
+          { "value": "鲜果榨汁（金沙江路和美广店）", "address": "普陀区金沙江路2239号金沙和美广场B1-10-6" },
+          { "value": "开心丽果（缤谷店）", "address": "上海市长宁区威宁路天山路341号" },
+          { "value": "超级鸡车（丰庄路店）", "address": "上海市嘉定区丰庄路240号" },
+          { "value": "妙生活果园（北新泾店）", "address": "长宁区新渔路144号" },
+          { "value": "香宜度麻辣香锅", "address": "长宁区淞虹路148号" },
+          { "value": "凡仔汉堡（老真北路店）", "address": "上海市普陀区老真北路160号" },
+          { "value": "港式小铺", "address": "上海市长宁区金钟路968号15楼15-105室" },
+          { "value": "蜀香源麻辣香锅（剑河路店）", "address": "剑河路443-1" },
+          { "value": "北京饺子馆", "address": "长宁区北新泾街道天山西路490-1号" },
+          { "value": "饭典*新简餐（凌空SOHO店）", "address": "上海市长宁区金钟路968号9号楼地下一层9-83室" },
+          { "value": "焦耳·川式快餐（金钟路店）", "address": "上海市金钟路633号地下一层甲部" },
+          { "value": "动力鸡车", "address": "长宁区仙霞西路299弄3号101B" },
+          { "value": "浏阳蒸菜", "address": "天山西路430号" },
+          { "value": "四海游龙（天山西路店）", "address": "上海市长宁区天山西路" },
+          { "value": "樱花食堂（凌空店）", "address": "上海市长宁区金钟路968号15楼15-105室" },
+          { "value": "壹分米客家传统调制米粉(天山店)", "address": "天山西路428号" },
+          { "value": "福荣祥烧腊（平溪路店）", "address": "上海市长宁区协和路福泉路255弄57-73号" },
+          { "value": "速记黄焖鸡米饭", "address": "上海市长宁区北新泾街道金钟路180号1层01号摊位" },
+          { "value": "红辣椒麻辣烫", "address": "上海市长宁区天山西路492号" },
+          { "value": "(小杨生煎)西郊百联餐厅", "address": "长宁区仙霞西路88号百联2楼" },
+          { "value": "阳阳麻辣烫", "address": "天山西路389号" },
+          { "value": "南拳妈妈龙虾盖浇饭", "address": "普陀区金沙江路1699号鑫乐惠美食广场A13" }
+        ];
+      },
+      querySearchAsync(queryString, cb) {
+        var restaurants = this.restaurants;
+        var results = queryString ? restaurants.filter(this.createStateFilter(queryString)) : restaurants;
 
+        clearTimeout(this.timeout);
+        this.timeout = setTimeout(() => {
+          cb(results);
+        }, 3000 * Math.random());
+      },
+      createStateFilter(queryString) {
+        return (state) => {
+          return (state.value.toLowerCase().indexOf(queryString.toLowerCase()) === 0);
+        };
+      },
+      handleSelect(item) {
+        console.log(item);
+      }
+    },
+    mounted() {
+      this.restaurants = this.loadAll();
+    }
+  };
+</script>
